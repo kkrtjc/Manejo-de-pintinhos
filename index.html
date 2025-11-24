@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oferta Exclusiva Premium: Guia de Manejo de Pintinhos. Triplique a sobrevivência do seu plantel.">
+    <title>OFERTA EXCLUSIVA PREMIUM - Guia de Pintinhos</title>
+    <style>
+        /* ============================================
+           RESET E VARIÁVEIS GLOBAIS (Premium Look)
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #f59e0b; /* Laranja/Amarelo */
+            --secondary-color: #1f2937; /* Cinza Escuro */
+            --accent-color: #ef4444; /* Vermelho */
+            --success-color: #10b981; /* Verde Mais Escuro */
+            --light-bg: #fef3c7; /* Amarelo Claro */
+            --dark-bg: #0f172a; /* Azul Escuro (Navy) */
+            --text-dark: #1f2937;
+            --text-light: #ffffff;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --shadow-heavy: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           HEADER FIXO (Timer e Exclusividade)
+           ============================================ */
+        .header {
+            background: var(--dark-bg);
+            color: var(--text-light);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px; /* Espaçamento entre os elementos do header */
+        }
+
+        .header-cta {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+            .header-cta .cta-button {
+                margin: 0;
+                padding: 8px 15px;
+                font-size: 14px;
+                max-width: 250px;
+                box-shadow: none;
+                background: var(--success-color);
+            }
+
+        .timer-badge {
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .header-cta {
+                order: 1; /* Coloca o CTA na primeira linha em mobile */
+                width: 100%;
+            }
+
+            .logo {
+                order: 2;
+            }
+
+            .timer-badge {
+                order: 3;
+            }
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--primary-color);
+        }
+
+        .timer-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           SEÇÃO HERO (Bloco de Destaque)
+           ============================================ */
+        .hero {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #374151 100%);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .urgency-badge {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--dark-bg);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(32px, 7vw, 52px);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+            .hero-title .highlight {
+                color: var(--primary-color);
+            }
+
+        .hero-subtitle {
+            font-size: clamp(18px, 4vw, 24px);
+            color: #d1d5db;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        /* ============================================
+           SEÇÃO DE OFERTA (Produto + CTA)
+           ============================================ */
+        .offer-section {
+            padding: 60px 20px;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .offer-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .product-image {
+            flex-shrink: 0;
+            width: 350px;
+            height: 450px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: var(--shadow-heavy);
+            border: 5px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            /* Placeholder para a capa do produto */
+            background-image: url('capa.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .cta-box {
+            flex-grow: 1;
+            text-align: left;
+        }
+
+        .price-tag {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+            .price-tag .old-price {
+                text-decoration: line-through;
+                color: var(--accent-color);
+                font-size: 18px;
+                margin-right: 10px;
+            }
+
+        .final-price {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--success-color), #14532d);
+            color: var(--text-light);
+            border: none;
+            padding: 18px 40px;
+            font-size: 22px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-heavy);
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 15px;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
+            }
+
+        .downsell-link {
+            font-size: 14px;
+            color: #9ca3af;
+            text-decoration: underline;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* ============================================
+           SEÇÃO DE EMPILHAMENTO DE VALOR (Visual)
+           ============================================ */
+        .value-stack-section {
+            padding: 60px 20px;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .value-stack-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .stack-item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stack-card {
+            background: var(--secondary-color);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: left;
+            border-left: 5px solid var(--primary-color);
+        }
+
+            .stack-card h4 {
+                font-size: 20px;
+                font-weight: 800;
+                color: var(--primary-color);
+                margin-bottom: 5px;
+            }
+
+            .stack-card p {
+                font-size: 14px;
+                color: #9ca3af;
+                margin-bottom: 10px;
+            }
+
+            .stack-card .price {
+                font-size: 18px;
+                font-weight: 700;
+                color: var(--text-light);
+            }
+
+        /* ============================================
+           GARANTIA (Bloco de Destaque)
+           ============================================ */
+        .guarantee-section {
+            padding: 60px 20px;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .guarantee-box {
+            background: #fff;
+            border: 3px solid var(--success-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .guarantee-icon {
+            font-size: 3.5rem;
+            flex-shrink: 0;
+            color: var(--success-color);
+        }
+
+        .guarantee-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
+        .guarantee-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+            color: var(--text-dark);
+        }
+
+        /* ============================================
+           RESPONSIVIDADE
+           ============================================ */
+
+        .offer-grid {
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .cta-box {
+            text-align: center;
+        }
+
+        .cta-button {
+            max-width: 100%;
+        }
+
+        .guarantee-box {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">OFERTA EXCLUSIVA PREMIUM</div>
+            <div class="header-cta">
+                <div id="kiwify-upsell-J4T4vaO-header" data-upsell-url="" data-downsell-url="https://dowsellpintos.netlify.app/">
+                    <button id="kiwify-upsell-trigger-J4T4vaO-header" class="cta-button">EU QUERO O GUIA COMPLETO POR R$ 44,90!</button>
+                </div>
+            </div>
+            <div class="timer-badge">
+                <span class="timer-label">EXPIRA EM:</span>
+                <span class="timer" id="timer-display">02:00</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="urgency-badge">OFERTA ÚNICA - SÓ AGORA!</div>
+
+            <h1 class="hero-title">
+                <span style="color: red;">Parabéns!</span>
+
+
+
+            </h1>
+            <h1 class="hero-title">
+                Agora e sua chance, Desbloqueie o <span class="highlight">Próximo Nível</span> de Sucesso na Criação de Aves.</h1>
+
+
+
+ 
+            <p class="hero-subtitle">
+                Parabéns por adquirir <strong>"O Segredo das Doenças Avícolas"</strong>! </p>
+               <p> Agora, garanta que seus pintinhos cheguem à fase adulta com saúde e força total. Esta é a <strong>única chance</strong> de adquirir este complemento essencial, disponível <strong>somente agora</strong> para você.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section" style="padding: 60px 20px; background-color: #fff; text-align: center;">
+        <div class="container">
+            <h2 class="hero-title" style="color: var(--secondary-color); margin-bottom: 40px;">
+                O Conteúdo Exclusivo que Garante o Sucesso do Seu Lote
+            </h2>
+            <div class="stack-item-grid" style="gap: 20px;">
+                <div class="stack-card" style="border-left: 5px solid var(--accent-color); background: #fef2f2;">
+                    <h4 style="color: var(--accent-color);">Capítulo 1: Fundamentos da Incubação</h4>
+                    <p style="color: var(--text-dark);">Domine o Processo de Incubação Natural vs. Artificial, calibração essencial da chocadeira e seleção de ovos viáveis. Evite perdas antes mesmo do nascimento.</p>
+                </div>
+                <div class="stack-card" style="border-left: 5px solid var(--accent-color); background: #fef2f2;">
+                    <h4 style="color: var(--accent-color);">Capítulo 2: O Desenvolvimento Embrionário</h4>
+                    <p style="color: var(--text-dark);">Cronograma completo de 21 dias, o que observar em cada fase e a técnica de Candleio para remover ovos inférteis e maximizar sua taxa de eclosão.</p>
+                </div>
+                <div class="stack-card" style="border-left: 5px solid var(--accent-color); background: #fef2f2;">
+                    <h4 style="color: var(--accent-color);">Capítulo 3: Preparação do Ambiente</h4>
+                    <p style="color: var(--text-dark);">Tudo sobre a "Criação" (ambiente de aquecimento), temperatura ideal, umidade, ventilação e o manejo correto da cama para evitar doenças e estresse.</p>
+                </div>
+                <div class="stack-card" style="border-left: 5px solid var(--accent-color); background: #fef2f2;">
+                    <h4 style="color: var(--accent-color);">Capítulo 4: Manejo Pós-Eclosão</h4>
+                    <p style="color: var(--text-dark);">Os primeiros 7 dias críticos. Como fornecer água e alimentação corretamente, vacinação e o manejo de pintinhos fracos para recuperar seu investimento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="offer-section">
+        <div class="container offer-grid">
+            <div class="product-image">
+                <!-- Capa do produto placeholder -->
+            </div>
+            <div class="cta-box">
+                <h3 class="guarantee-title" style="font-size: 28px; margin-bottom: 10px; color: var(--secondary-color);">O Guia que Triplica a Sobrevivência</h3>
+                <p style="font-size: 18px; margin-bottom: 30px; color: #6b7280;">
+                    Evite a dor de cabeça e o prejuízo de perder seus pintinhos. Este guia é o <strong>seguro</strong> que faltava para o seu investimento.
+                </p>
+
+                <p class="price-tag">O Guia Completo de Manejo de Pintinhos por apenas</p>
+                <p class="final-price">R$ 44,90</p>
+
+                <div id="kiwify-upsell-J4T4vaO" data-upsell-url="" data-downsell-url="https://dowsellpintos.netlify.app/">
+                    <button id="kiwify-upsell-trigger-J4T4vaO" class="cta-button">SIM, EU QUERO O GUIA COMPLETO POR R$ 44,90! (OFERTA EXCLUSIVA)</button>
+                    <div id="kiwify-upsell-cancel-trigger-J4T4vaO" class="downsell-link">Não, eu prefiro arriscar perder meus pintinhos.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Empilhamento de Valor Removida - Foco no valor intrínseco do Guia -->
+
+    <section class="guarantee-section">
+        <div class="guarantee-box">
+            <span class="guarantee-icon">🛡️</span>
+            <div>
+                <h3 class="guarantee-title">Sua Compra é 100% Protegida</h3>
+                <p class="guarantee-text">
+                    Se em 7 dias você não notar uma melhora drástica na saúde e sobrevivência dos seus pintinhos, nós devolvemos <strong>100% do seu dinheiro</strong>. Risco Zero.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // ============================================
+        // JAVASCRIPT DO TIMER
+        // ============================================
+        function startTimer(duration, display) {
+            let timer = duration, minutes, seconds;
+            const interval = setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    clearInterval(interval);
+                    // Lógica para expirar a oferta
+                    document.getElementById('timer-display').textContent = "00:00";
+                    document.querySelector('.urgency-badge').textContent = "OFERTA EXPIRADA";
+                    document.querySelector('.cta-button').disabled = true;
+                }
+            }, 1000);
+        }
+
+        // 30 minutos em segundos
+        // 30 minutos em segundos
+        const thirtyMinutes = 60 * 30;
+        const display = document.querySelector('#timer-display');
+        startTimer(thirtyMinutes, display);
+    </script>
+
+
+    <script src="https://snippets.kiwify.com/upsell/upsell.min.js"></script>
+</body>
+</html>
